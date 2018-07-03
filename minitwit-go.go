@@ -1,7 +1,6 @@
 package main
 
 import (
-	"net/http"
 	"os"
 
 	"minitwit-go/controllers"
@@ -23,11 +22,7 @@ func main() {
 	e := echo.New()
 	e.Use(middleware.Logger())
 
-	controllers.Setup(e.Router())
-
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Nothing to see here.")
-	})
+	controllers.Setup(e.Router(), e.Group(""))
 
 	err := e.Start(":" + port())
 	if err != nil {

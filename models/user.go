@@ -7,6 +7,6 @@ type User struct {
 }
 
 type Follow struct {
-	follower User `bson:"follower"`
-	followee User `bson:"followee"`
+	Follower User `bson:"follower"`
+	Followee User `bson:"followee"`
 }
