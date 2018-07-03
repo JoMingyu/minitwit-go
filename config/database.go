@@ -7,8 +7,10 @@ import (
 )
 
 var mongodbSession *mgo.Session
+var dbName = "minitwit-go"
 var (
-	dbPrefix = "minitwit-go"
+	UserCol   = DB().C("users")
+	FollowCol = DB().C("follows")
 )
 
 // DBSession returns the current db session.
@@ -35,8 +37,8 @@ func DBSession() *mgo.Session {
 }
 
 // DB returns a database given a name.
-func DB(name string) *mgo.Database {
-	return DBSession().DB(name)
+func DB() *mgo.Database {
+	return DBSession().DB(dbName)
 }
 
 // AddBasicIndex add a ascending index given a list of `keys`. The index is always built in background.
