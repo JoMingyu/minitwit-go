@@ -12,7 +12,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-func Signup(c echo.Context) error {
+func signup(c echo.Context) error {
 	u := new(models.User)
 
 	if err := c.Bind(u); err != nil {
@@ -29,7 +29,7 @@ func Signup(c echo.Context) error {
 	}
 }
 
-func Login(c echo.Context) error {
+func login(c echo.Context) error {
 	u := new(models.User)
 
 	if err := c.Bind(u); err != nil {
