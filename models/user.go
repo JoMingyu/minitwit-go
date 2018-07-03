@@ -3,5 +3,10 @@ package models
 type User struct {
 	Username string `bson:"username" json:"username"`
 	Email    string `bson:"email" json:"email"`
-	PwHash   string `bson:"pwHash" json:"pw"`
+	Pw       string `bson:"pw" json:"pw"`
+}
+
+type Follow struct {
+	follower User `bson:"follower"`
+	followee User `bson:"followee"`
 }
