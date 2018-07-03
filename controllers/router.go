@@ -12,6 +12,7 @@ func Setup(router *echo.Router, group *echo.Group) {
 
 	group.Use(middleware.JWT([]byte("secret")))
 	group.Add(echo.POST, "/:username/follow", follow)
+	group.Add(echo.POST, "/:username/unfollow", unfollow)
 }
 
 // vi:syntax=go
