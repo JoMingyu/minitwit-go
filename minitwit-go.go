@@ -4,12 +4,13 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/labstack/echo"
-	"minitwit-go/config"
 	"minitwit-go/controllers"
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
-func getPort() string {
+func port() string {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "4000"
@@ -20,18 +21,16 @@ func getPort() string {
 
 func main() {
 	e := echo.New()
+	e.Use(middleware.Logger())
 
-	config.Setup(e)
 	controllers.Setup(e.Router())
 
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Nothing to see here.")
 	})
 
-	err := e.Start(":" + getPort())
+	err := e.Start(":" + port())
 	if err != nil {
 		panic(err)
 	}
 }
-
-// vi:syntax=go

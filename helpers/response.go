@@ -2,6 +2,7 @@ package helpers
 
 import (
 	"fmt"
+
 	"github.com/labstack/echo"
 )
 
@@ -52,5 +53,3 @@ func JSONResponseError(c echo.Context, err *ResponseError) error {
 
 	return JSONResponse(c, err.Code, body)
 }
-
-// vi:syntax=go
